@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+
+    <!-- Java Runtime Environment -->
+    <classpathentry kind="con"
+        path="org.eclipse.jdt.launching.JRE_CONTAINER/
+        org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
+        <attributes>
+            <attribute name="module" value="true"/>
+        </attributes>
+    </classpathentry>
+
+    <!-- Source Folder -->
+    <classpathentry kind="src" path="src/main/java"/>
+
+    <!-- Web Container Libraries -->
+    <classpathentry kind="con"
+        path="org.eclipse.jst.j2ee.internal.web.container"/>
+
+    <!-- Web Module Dependencies -->
+    <classpathentry kind="con"
+        path="org.eclipse.jst.j2ee.internal.module.container"/>
+
+    <!-- Apache Tomcat Runtime -->
+    <classpathentry kind="con"
+        path="org.eclipse.jst.server.core.container/
+        org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
+        <attributes>
+            <attribute name="owner.project.facets" value="jst.web"/>
+        </attributes>
+    </classpathentry>
+
+    <!-- Compiled Output Folder -->
+    <classpathentry kind="output" path="build/classes"/>
+
+</classpath>
