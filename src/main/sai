@@ -34,3 +34,42 @@
     <classpathentry kind="output" path="build/classes"/>
 
 </classpath>
+class Solution {
+    public int numberOfStableArrays(int zero, int one, int limit) {
+        int MOD = 1000000007;
+        // dp[i][j][0] = number of stable arrays with i zeros, j ones, ending in 0
+        // dp[i][j][1] = number of stable arrays with i zeros, j ones, ending in 1
+        long[][][] dp = new long[zero + 1][one + 1][2];
+
+        // Base cases: if we only have one type of digit, we can only have 1 way
+        // provided it doesn't exceed the limit.
+        for (int i = 0; i <= Math.min(zero, limit); i++) dp[i][0][0] = 1;
+        for (int j = 0; j <= Math.min(one, limit); j++) dp[0][j][1] = 1;
+
+        for (int i = 1; i <= zero; i++) {
+            for (int j = 1; j <= one; j++) {
+                
+                // To get dp[i][j][0], we can add a '0' to any stable array 
+                // that ended in 0 or 1 at (i-1, j).
+                // Formula: dp[i][j][0] = dp[i-1][j][0] + dp[i-1][j][1] - (invalid cases)
+                dp[i][j][0] = (dp[i - 1][j][0] + dp[i - 1][j][1]) % MOD;
+                if (i > limit) {
+                    // Subtract cases where we just created a streak of (limit + 1) zeros.
+                    // That happens if the array was (i - limit - 1, j) ending in 1,
+                    // followed by exactly (limit + 1) zeros.
+                    long invalid = dp[i - limit - 1][j][1];
+                    dp[i][j][0] = (dp[i][j][0] - invalid + MOD) % MOD;
+                }
+
+                // To get dp[i][j][1], we do the same for ones.
+                dp[i][j][1] = (dp[i][j - 1][0] + dp[i][j - 1][1]) % MOD;
+                if (j > limit) {
+                    long invalid = dp[i][j - limit - 1][0];
+                    dp[i][j][1] = (dp[i][j][1] - invalid + MOD) % MOD;
+                }
+            }
+        }
+
+        return (int) ((dp[zero][one][0] + dp[zero][one][1]) % MOD);
+    }
+}
