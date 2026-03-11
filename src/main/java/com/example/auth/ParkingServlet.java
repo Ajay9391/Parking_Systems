@@ -18,7 +18,7 @@ public class ParkingServlet extends HttpServlet {
             store = new ParkingStore();
             getServletContext().setAttribute("parkingStore", store);
         }
-
+                // this is the new added line ........
         // This servlet used duration & charge (7-arg). That constructor now exists.
         ParkingEntry entry = new ParkingEntry(
                 req.getParameter("ownerName"),
