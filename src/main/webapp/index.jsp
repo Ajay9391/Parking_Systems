@@ -16,8 +16,6 @@
     <form action="parking.jsp" method="get" style="display:inline;">
         <button type="submit" class="btn">Park the Vehicle</button>
     </form>
-    <form action="viewRecords.jsp" method="get" style="display:inline;">
-        <button type="submit" class="btn">View Parking Records</button>
-    </form>
+    
 </body>
 </html>
